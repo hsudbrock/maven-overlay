@@ -21,5 +21,5 @@ maven-pom_src_install() {
 	dodir /usr/share/${PN}-${SLOT}
 	insinto /usr/share/${PN}-${SLOT}
 	doins pom.xml
-	registerMavenArtifact /usr/share/${PN}-${SLOT}/pom.xml ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION}
+	registerMavenArtifact pom.xml ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} pom
 }

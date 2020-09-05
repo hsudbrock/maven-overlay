@@ -29,14 +29,16 @@ registerMavenArtifact() {
 	local artifactId="${1}"
 	shift 1
 	local version="${1}"
+	shift 1
+	local extension="${1}"
 
 	local targetFolder="${GENTOO_MAVEN_REPOSITORY}/${groupId//.//}/${artifactId}/${version}"
-	local targetFileName="${artifactId}-${version}.pom"
+	local targetFileName="${artifactId}-${version}.${extension}"
 
 	# I would love to simply symlink from the local gentoo maven repository to the pom, but, unfortunately,
 	# it appears that maven does not follow symlinks inside a local repository.
 	echo "Copying ${file} for artifact ${groupId}:${artifactId}:${version} to ${targetFolder}/${targetFileName}"
-	cp ${S}/pom.xml ${S}/${targetFileName}
+	cp ${S}/${file} ${S}/${targetFileName}
 	dodir ${targetFolder}
 	insinto ${targetFolder}
 	doins ${targetFileName}
