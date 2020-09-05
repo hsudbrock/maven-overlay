@@ -20,4 +20,4 @@ MAVEN_GROUP_ID="org.apache.maven"
 MAVEN_ARTIFACT_ID="maven-parent"
 MAVEN_VERSION="33"
 
-BDEPEND="=dev-java/apache-pom-33"
+BDEPEND="=dev-java/apache-pom-21"
