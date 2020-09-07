@@ -19,3 +19,10 @@ MAVEN_ARTIFACT_ID="maven-plugins"
 MAVEN_VERSION="34"
 
 BDEPEND="=dev-java/maven-parent-pom-34"
+
+S="${WORKDIR}"
+
+src_unpack() {
+  echo ${S}
+  cp "${DISTDIR}"/maven-plugins-34.pom "${S}"/pom.xml || die
+}
