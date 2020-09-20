@@ -24,6 +24,6 @@ BDEPEND=">=virtual/jdk-1.7"
 JAVA_GENTOO_CLASSPATH="plexus-utils-3.2.1"
 
 src_install() {
-  java-pkg-simple_src_install
-  registerMavenArtifact maven-artifact.jar ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} jar
+	java-pkg-simple_src_install
+	registerMavenArtifact maven-artifact.jar ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} jar
 }
