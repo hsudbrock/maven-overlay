@@ -7,11 +7,7 @@ EAPI=7
 
 inherit maven-pom
 
-DESCRIPTION="The project object model (POM) for: The Apache Software Foundation provides support for the Apache community of open-source software projects.
-    The Apache projects are characterized by a collaborative, consensus based development process, an open and
-    pragmatic software license, and a desire to create high quality software that leads the way in its field.
-    We consider ourselves not simply a group of projects sharing a server, but rather a community of developers
-    and users."
+DESCRIPTION="POM for: The Apache Software Foundation provides support for the Apache communi"
 HOMEPAGE="https://www.apache.org/"
 SRC_URI="https://repo1.maven.org/maven2/org/apache/apache/23/apache-23.pom"
 

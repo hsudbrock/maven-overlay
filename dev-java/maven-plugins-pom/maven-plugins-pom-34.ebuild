@@ -7,7 +7,7 @@ EAPI=7
 
 inherit maven-pom
 
-DESCRIPTION="The project object model (POM) for: Maven Plugins"
+DESCRIPTION="POM for: Maven Plugins"
 HOMEPAGE="https://maven.apache.org/plugins/"
 SRC_URI="https://repo1.maven.org/maven2/org/apache/maven/plugins/maven-plugins/34/maven-plugins-34.pom"
 
@@ -20,7 +20,7 @@ MAVEN_GROUP_ID="org.apache.maven.plugins"
 MAVEN_ARTIFACT_ID="maven-plugins"
 MAVEN_VERSION="34"
 
-BDEPEND="=dev-java/maven-parent-pom-34"
+BDEPEND="~dev-java/maven-parent-pom-34"
 
 S="${WORKDIR}"
 
