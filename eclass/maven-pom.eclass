@@ -10,7 +10,7 @@
 # @DESCRIPTION:
 # This class is intended to package Maven POMs.
 
-inherit maven-base maven-repo
+inherit maven-base
 
 EXPORT_FUNCTIONS src_install
 
