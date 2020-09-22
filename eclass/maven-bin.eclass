@@ -12,7 +12,14 @@
 
 inherit maven-base
 
-EXPORT_FUNCTIONS src_install
+EXPORT_FUNCTIONS src_unpack src_install
+
+# @FUNCTION: maven-bin_src_unpack
+# @DESCRIPTION:
+# src_unpack for bare maven binary files. Simply copies the downloaded jar file to the work dir.
+maven-bin_src_unpack() {
+	cp "${DISTDIR}"/${MAVEN_ARTIFACT_ID}-${MAVEN_VERSION}.jar "${S}"/ || die "Could not copy downloaded jar file from ${DISTDIR} to ${S}"
+}
 
 # @FUNCTION: maven-bin_src_install
 # @DESCRIPTION:

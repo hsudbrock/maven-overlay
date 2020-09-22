@@ -21,7 +21,3 @@ MAVEN_ARTIFACT_ID="maven-checkstyle-plugin"
 MAVEN_VERSION="3.1.1"
 
 S="${WORKDIR}"
-
-src_unpack() {
-	cp "${DISTDIR}"/maven-checkstyle-plugin-3.1.1.jar "${S}"/maven-checkstyle-plugin-3.1.1.jar || die "Could not copy downloaded jar file from ${DISTDIR} to ${S}"
-}
