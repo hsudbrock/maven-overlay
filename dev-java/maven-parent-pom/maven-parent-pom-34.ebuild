@@ -23,7 +23,3 @@ MAVEN_VERSION="34"
 BDEPEND="~dev-java/apache-pom-23"
 
 S="${WORKDIR}"
-
-src_unpack() {
-	cp "${DISTDIR}"/maven-parent-34.pom "${S}"/pom.xml || die "Could not copy downloaded pom file from ${DISTDIR} to ${S}"
-}

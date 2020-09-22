@@ -7,7 +7,7 @@ EAPI=7
 
 inherit maven-bin
 
-DESCRIPTION="Binary for: Generates a report on violations of code style and optionally fails th"
+DESCRIPTION="Binary for: Generates a report on violations of code style and optionally fai"
 HOMEPAGE="https://maven.apache.org/plugins/maven-checkstyle-plugin/"
 SRC_URI="https://repo1.maven.org/maven2/org/apache/maven/plugins/maven-checkstyle-plugin/3.1.1/maven-checkstyle-plugin-3.1.1.jar"
 

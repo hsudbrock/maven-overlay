@@ -21,7 +21,3 @@ MAVEN_ARTIFACT_ID="apache"
 MAVEN_VERSION="23"
 
 S="${WORKDIR}"
-
-src_unpack() {
-	cp "${DISTDIR}"/apache-23.pom "${S}"/pom.xml || die "Could not copy downloaded pom file from ${DISTDIR} to ${S}"
-}

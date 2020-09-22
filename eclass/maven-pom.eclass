@@ -12,7 +12,14 @@
 
 inherit maven-base
 
-EXPORT_FUNCTIONS src_install
+EXPORT_FUNCTIONS src_unpack src_install
+
+# @FUNCTION: maven-pom_src_unpack
+# @DESCRIPTION:
+# src_unpack for bare maven pom files. Simply copies the downloaded pom file to the work directory
+maven-pom_src_unpack() {
+	cp "${DISTDIR}"/${MAVEN_ARTIFACT_ID}-${MAVEN_VERSION}.pom "${S}"/ || die "Could not copy downloaded pom file from ${DISTDIR} to ${S}"
+}
 
 # @FUNCTION: maven-pom_src_install
 # @DESCRIPTION:
@@ -20,6 +27,8 @@ EXPORT_FUNCTIONS src_install
 maven-pom_src_install() {
 	dodir /usr/share/${PN}-${SLOT}
 	insinto /usr/share/${PN}-${SLOT}
-	doins pom.xml
-	registerMavenArtifact pom.xml ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} pom
+
+	FILENAME=${MAVEN_ARTIFACT_ID}-${MAVEN_VERSION}.pom 
+	doins ${FILENAME}
+	registerMavenArtifact ${FILENAME} ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} pom
 }
