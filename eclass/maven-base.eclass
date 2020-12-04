@@ -108,6 +108,6 @@ registerBinaryMavenArtifact() {
 
         echo "Linking ${pathToArtifact} for artifact ${groupId}:${artifactId}:${version} into the portage maven bin repository at ${targetFolder}/${targetFileName}"
         dodir ${targetFolder}
-        dosym ${targetFolder}/${targetFileName} ${pathToArtifact}
+        dosym ${pathToArtifact} ${targetFolder}/${targetFileName}
 }
 
