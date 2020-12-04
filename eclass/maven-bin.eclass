@@ -30,5 +30,5 @@ maven-bin_src_install() {
 
 	FILENAME=${MAVEN_ARTIFACT_ID}-${MAVEN_VERSION}.jar
 	doins ${FILENAME}
-	registerBinaryMavenArtifact ${FILENAME} ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} jar
+	registerBinaryMavenArtifact /opt/${PN}-${SLOT}/lib/${FILENAME} ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} jar
 }

@@ -86,14 +86,14 @@ registerMavenArtifact() {
 }
 
 # @FUNCTION: registerBinaryMavenArtifact
-# @USAGE: registerBinaryMavenArtifact <file> <groupId> <artifactId> <version> <packaging> 
+# @USAGE: registerBinaryMavenArtifact <pathToArtifact> <groupId> <artifactId> <version> <packaging> 
 # @INTERNAL
 # @DESCRIPTION:
 # Links the provided file into the portage maven bin repository under the provided group ID,
 # artifact ID, and version.
 registerBinaryMavenArtifact() {
 	# TODO: Avoid duplication of code in this method with the non-bin variant above
-        local file="${1}"
+        local pathToArtifact="${1}"
         shift 1
         local groupId="${1}"
         shift 1
@@ -106,12 +106,8 @@ registerBinaryMavenArtifact() {
         local targetFolder="${GENTOO_MAVEN_BIN_REPOSITORY}/${groupId//.//}/${artifactId}/${version}"
         local targetFileName="${artifactId}-${version}.${packaging}"
 
-        # I would love to simply symlink from the local gentoo maven repository to the pom, but, unfortunately,
-        # it appears that maven does not follow symlinks inside a local repository.
-        echo "Copying ${file} for artifact ${groupId}:${artifactId}:${version} to ${targetFolder}/${targetFileName}"
-        cp ${S}/${file} ${S}/${targetFileName}
+        echo "Linking ${pathToArtifact} for artifact ${groupId}:${artifactId}:${version} into the portage maven bin repository at ${targetFolder}/${targetFileName}"
         dodir ${targetFolder}
-        insinto ${targetFolder}
-        doins ${targetFileName}
+        dosym ${targetFolder}/${targetFileName} ${pathToArtifact}
 }
 
