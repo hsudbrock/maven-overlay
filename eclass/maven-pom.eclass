@@ -1,4 +1,4 @@
-# Copyright 2020-2020 Gentoo Authors
+# Copyright 2015-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: maven-pom.eclass
@@ -10,7 +10,7 @@
 # @DESCRIPTION:
 # This class is intended to package Maven POMs.
 
-inherit maven-base
+inherit maven-utils
 
 EXPORT_FUNCTIONS src_unpack src_install
 
@@ -23,12 +23,12 @@ maven-pom_src_unpack() {
 
 # @FUNCTION: maven-pom_src_install
 # @DESCRIPTION:
-# src_install for bare maven pom files. Installs the pom file and links it into the offline maven repository.
+# src_install for bare maven pom files. Installs the pom file and registers it as  a maven artifact.
 maven-pom_src_install() {
 	dodir /usr/share/${PN}-${SLOT}
 	insinto /usr/share/${PN}-${SLOT}
 
-	FILENAME=${MAVEN_ARTIFACT_ID}-${MAVEN_VERSION}.pom 
+	FILENAME=${MAVEN_ARTIFACT_ID}-${MAVEN_VERSION}.pom
 	doins ${FILENAME}
-	registerMavenArtifact ${FILENAME} ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} pom
+	registerMavenArtifact /usr/share/${PN}-${SLOT}/${FILENAME} ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} pom
 }
