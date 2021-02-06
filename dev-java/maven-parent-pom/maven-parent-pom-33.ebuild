@@ -9,17 +9,17 @@ inherit maven-pom
 
 DESCRIPTION="The Maven Parent POM"
 HOMEPAGE="https://maven.apache.org/"
-SRC_URI="https://repo1.maven.org/maven2/org/apache/maven/maven-parent/34/maven-parent-34.pom"
+SRC_URI="https://repo1.maven.org/maven2/org/apache/maven/maven-parent/33/maven-parent-33.pom"
 
 LICENSE="Apache-2.0"
 
-SLOT="34"
+SLOT="33"
 KEYWORDS="amd64"
 
 MAVEN_GROUP_ID="org.apache.maven"
 MAVEN_ARTIFACT_ID="maven-parent"
-MAVEN_VERSION="34"
+MAVEN_VERSION="33"
 
-BDEPEND="~dev-java/apache-pom-23"
+BDEPEND="~dev-java/apache-pom-21"
 
 S="${WORKDIR}"
