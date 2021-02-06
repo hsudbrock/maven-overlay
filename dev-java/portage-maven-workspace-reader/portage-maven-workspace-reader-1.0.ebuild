@@ -4,7 +4,7 @@
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/hsudbrock/portage-maven-workspace-reader.git"
-JAVA_GENTOO_CLASSPATH="javax-inject"
+JAVA_GENTOO_CLASSPATH="javax-inject,maven-resolver-api"
 JAVA_SRC_DIR="src/main/java"
 
 inherit git-r3 java-pkg-2 java-pkg-simple
@@ -20,7 +20,8 @@ KEYWORDS="~amd64"
 
 S="${WORKDIR}/${P}"
 
-CDEPEND="dev-java/javax-inject:0"
+CDEPEND="dev-java/javax-inject:0
+		 dev-java/maven-resolver-api:0"
 
 RDEPEND=">=virtual/jre-1.8
 		${CDEPEND}"
