@@ -28,3 +28,20 @@ RDEPEND=">=virtual/jre-1.8
 
 DEPEND=">=virtual/jdk-1.8
 		${CDEPEND}"
+
+src_prepare() {
+	default
+	mkdir -p ${S}/target/META-INF/sisu
+	echo "de.hsudbrock.portagemavenworkspacereader.PortageWorkspaceReader" >> ${S}/target/META-INF/sisu/javax.inject.Named
+}
+
+src_compile() {
+	# Build the Jar using java-pkg-simple
+	java-pkg-simple_src_compile
+
+	# Then add the sisu configuration into that Jar
+	mkdir -p ${S}/META-INF/sisu
+	echo "de.hsudbrock.portagemavenworkspacereader.PortageWorkspaceReader" >> ${S}/META-INF/sisu/javax.inject.Named
+	cd ${S}
+	jar -uvf portage-maven-workspace-reader.jar META-INF/sisu
+}
