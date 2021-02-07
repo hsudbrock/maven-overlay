@@ -30,5 +30,5 @@ maven-pom_src_install() {
 
 	FILENAME=${MAVEN_ARTIFACT_ID}-${MAVEN_VERSION}.pom
 	doins ${FILENAME}
-	registerMavenArtifact /usr/share/${PN}-${SLOT}/${FILENAME} ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} pom
+	registerSourceMavenArtifact /usr/share/${PN}-${SLOT}/${FILENAME} ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} pom
 }

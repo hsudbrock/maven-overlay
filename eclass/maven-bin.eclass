@@ -1,4 +1,4 @@
-# Copyright 2020-2020 Gentoo Authors
+# Copyright 2015-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: maven-bin.eclass
@@ -10,7 +10,7 @@
 # @DESCRIPTION:
 # This class is intended to package Maven Binary Jar files.
 
-inherit maven-base
+inherit maven-utils
 
 EXPORT_FUNCTIONS src_unpack src_install
 
@@ -25,10 +25,12 @@ maven-bin_src_unpack() {
 # @DESCRIPTION:
 # src_install for bare maven binary files. Installs the binary file and links it into the offline maven repository for binary files.
 maven-bin_src_install() {
-	dodir /opt/${PN}-${SLOT}/lib
-	insinto /opt/${PN}-${SLOT}/lib
+	local filename=${MAVEN_ARTIFACT_ID}-${MAVEN_VERSION}.jar
+	local destfolder=/opt/${PN}-${SLOT}/lib
 
-	FILENAME=${MAVEN_ARTIFACT_ID}-${MAVEN_VERSION}.jar
-	doins ${FILENAME}
-	registerBinaryMavenArtifact ${FILENAME} ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} jar
+	dodir ${destfolder}
+	insinto ${destfolder}
+	doins ${filename}
+
+	registerBinaryMavenArtifact ${destfolder}/${filename} ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} jar
 }
