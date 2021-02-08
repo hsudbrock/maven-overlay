@@ -1,0 +1,25 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This ebuild was generated using the mvn-ebuilder-maven-plugin.
+
+EAPI=7
+
+inherit maven-pom
+
+DESCRIPTION="TODO: POM for: Maven Plugins"
+HOMEPAGE="TODO: https://maven.apache.org/plugins/"
+SRC_URI="https://repo1.maven.org/maven2/org/apache/maven/plugins/maven-plugins/33/maven-plugins-33.pom"
+
+LICENSE="Apache-2.0"
+
+SLOT="33"
+KEYWORDS="amd64"
+
+MAVEN_GROUP_ID="org.apache.maven.plugins"
+MAVEN_ARTIFACT_ID="maven-plugins"
+MAVEN_VERSION="33"
+
+BDEPEND="~dev-java/maven-parent-pom:33"
+
+S="${WORKDIR}"
