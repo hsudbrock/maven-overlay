@@ -19,18 +19,22 @@ EXPORT_FUNCTIONS src_unpack src_install
 # src_unpack for bare maven binary files. Simply copies the downloaded jar file to the work dir.
 maven-bin_src_unpack() {
 	cp "${DISTDIR}"/${MAVEN_ARTIFACT_ID}-${MAVEN_VERSION}.jar "${S}"/ || die "Could not copy downloaded jar file from ${DISTDIR} to ${S}"
+	cp "${DISTDIR}"/${MAVEN_ARTIFACT_ID}-${MAVEN_VERSION}.pom "${S}"/ || die "Could not copy downloaded pom file from ${DISTDIR} to ${S}"
 }
 
 # @FUNCTION: maven-bin_src_install
 # @DESCRIPTION:
 # src_install for bare maven binary files. Installs the binary file and links it into the offline maven repository for binary files.
 maven-bin_src_install() {
-	local filename=${MAVEN_ARTIFACT_ID}-${MAVEN_VERSION}.jar
+	local jarFilename=${MAVEN_ARTIFACT_ID}-${MAVEN_VERSION}.jar
+	local pomFilename=${MAVEN_ARTIFACT_ID}-${MAVEN_VERSION}.pom
 	local destfolder=/opt/${PN}-${SLOT}/lib
 
 	dodir ${destfolder}
 	insinto ${destfolder}
-	doins ${filename}
+	doins ${jarFilename}
+	doins ${pomFilename}
 
-	registerBinaryMavenArtifact ${destfolder}/${filename} ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} jar
+	registerBinaryMavenArtifact ${destfolder}/${jarFilename} ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} jar
+	registerBinaryMavenArtifact ${destfolder}/${pomFilename} ${MAVEN_GROUP_ID} ${MAVEN_ARTIFACT_ID} ${MAVEN_VERSION} pom
 }
